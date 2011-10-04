@@ -69,7 +69,6 @@ public class KdrSessionParam extends SrtpSessionParam {
         return (int) Math.pow(2, kdr);
     }
 
-    @Override
     public String encode() {
         return "KDR=" + String.valueOf(kdr);
     }

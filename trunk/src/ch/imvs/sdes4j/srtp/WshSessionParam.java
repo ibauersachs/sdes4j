@@ -57,7 +57,6 @@ public class WshSessionParam extends SrtpSessionParam {
         return wsh;
     }
 
-    @Override
     public String encode() {
         return "WSH=" + wsh;
     }

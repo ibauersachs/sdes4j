@@ -66,7 +66,6 @@ public class FecKeySessionParam extends SrtpSessionParam {
         return keyParams;
     }
 
-    @Override
     public String encode() {
         StringBuilder sb = new StringBuilder();
         sb.append("FEC_KEY=");
