@@ -143,7 +143,6 @@ public class SrtpKeyParam implements KeyParam {
         return mkiLength;
     }
 
-    @Override
     public String encode() {
         StringBuilder sb = new StringBuilder();
         sb.append(keyMethod);

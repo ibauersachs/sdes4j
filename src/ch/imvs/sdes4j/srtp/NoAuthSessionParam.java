@@ -24,7 +24,6 @@ package ch.imvs.sdes4j.srtp;
 public class NoAuthSessionParam extends SrtpSessionParam {
     private static final String UNAUTHENTICATED_SRTP = "UNAUTHENTICATED_SRTP";
 
-    @Override
     public String encode() {
         return UNAUTHENTICATED_SRTP;
     }
