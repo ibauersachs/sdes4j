@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project default="javadoc" name="SDES4J" xmlns:ivy="antlib:org.apache.ivy.ant">
-	<property name="project.version" value="1.0" />
+	<property name="project.version" value="1.0.1" />
 	<property name="build.dir" value="build" />
 	<property name="build.classes.dir" value="${build.dir}/classes" />
 	<property name="build.doc.dir" value="${build.dir}/doc" />
