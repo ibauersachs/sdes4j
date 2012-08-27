@@ -183,17 +183,45 @@ public class CryptoAttribute {
         sb.append(' ');
         sb.append(cryptoSuite.encode());
         sb.append(' ');
+        sb.append(getKeyParamsString());
+        sb.append(getSessionParamsString());
+        return sb.toString();
+    }
+
+    /**
+     * Returns a string representation the key parameters according to the ABNF
+     * rule key-params.
+     * 
+     * @return String representation of the list of key params separated by ";".
+     */
+    public String getKeyParamsString() {
+        StringBuilder sb = new StringBuilder();
+
         for (int i = 0; i < keyParams.length; i++) {
             sb.append(keyParams[i].encode());
             if (i < keyParams.length - 1)
                 sb.append(';');
         }
+
+        return sb.toString();
+    }
+
+    /**
+     * Returns a string representation of the session parameters according to
+     * the ABNF rule session-param.
+     * @return Returns a string representation of the list of session params
+     * separated by " ".
+     */
+    public String getSessionParamsString() {
+        StringBuilder sb = new StringBuilder();
+
         if (sessionParams != null) {
             for (SessionParam p : sessionParams) {
                 sb.append(' ');
                 sb.append(p.encode());
             }
         }
+
         return sb.toString();
     }
 }
