@@ -22,6 +22,23 @@ public class SrtpCryptoAttribute extends CryptoAttribute {
     }
 
     /**
+     * Creates an instance of a SrtpCryptoAttribute from SDES attributes (tag,
+     * crypto suite, key params and session params).
+     *
+     * @param tag unparsed tag as a string. 
+     * @param cryptoSuite the crypto suite as an unparsed string.
+     * @param keyParams An unparsed string representation of the key param list
+     * (each key must be separated by a ";").
+     * @param sessionParams An unparsed string representation of the session
+     * param list (each key must be separated by a " ").
+     *
+     * @return a parsed SRTP crypto attribute.
+     */
+    public static SrtpCryptoAttribute create(String tag, String cryptoSuite, String keyParams, String sessionParams){
+        return (SrtpCryptoAttribute) CryptoAttribute.create(tag, cryptoSuite, keyParams, sessionParams, new SrtpSDesFactory());
+    }
+
+    /**
      * Creates a crypto attribute from already instantiated objects.
      * 
      * @param tag identifier for this particular crypto attribute
@@ -31,10 +48,7 @@ public class SrtpCryptoAttribute extends CryptoAttribute {
      * @param sessionParams the additional key parameters
      */
     public SrtpCryptoAttribute(int tag, SrtpCryptoSuite cryptoSuite, SrtpKeyParam[] keyParams, SrtpSessionParam[] sessionParams) {
-        this.tag = tag;
-        this.cryptoSuite = cryptoSuite;
-        this.keyParams = keyParams;
-        this.sessionParams = sessionParams;
+        super(tag, cryptoSuite, keyParams, sessionParams);
     }
 
     @Override
