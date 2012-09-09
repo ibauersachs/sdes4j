@@ -231,6 +231,7 @@ public class CryptoAttribute {
         sb.append(' ');
         sb.append(getKeyParamsString());
         if (sessionParams != null && sessionParams.length > 0) {
+            sb.append(' ');
             sb.append(getSessionParamsString());
         }
 

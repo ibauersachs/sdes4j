@@ -110,6 +110,41 @@ public class CryptoAttributeTest {
         validateExample2(a);
     }
 
+    @Test(expected=IllegalArgumentException.class)
+    public void testParseWithoutKeyParameter() {
+        new CryptoAttribute(1, new SrtpCryptoSuite(SrtpCryptoSuite.AES_CM_128_HMAC_SHA1_80), null, null);
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void testParseWithoutKeyParameterString() {
+        CryptoAttribute.create("1 AES_CM_128_HMAC_SHA1_80", f);
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void testParseWithTagAboveLimitString() {
+        CryptoAttribute.create("1234567890 AES_CM_128_HMAC_SHA1_80", f);
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void testParseWithTagBelowLimitString() {
+        CryptoAttribute.create("-1 AES_CM_128_HMAC_SHA1_80", f);
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void testParseWithTagAboveLimit() {
+        new CryptoAttribute(1234567890, null, null, null);
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void testParseWithTagBelowLimit() {
+        new CryptoAttribute(-1, null, null, null);
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void testParseWithoutCryptoSuite() {
+        new CryptoAttribute(1, null, null, null);
+    }
+
     @Test
     public void testParseExample1Xmpp() {
         CryptoAttribute a = CryptoAttribute.create("1", "AES_CM_128_HMAC_SHA1_80", "inline:WVNfX19zZW1jdGwgKCkgewkyMjA7fQp9CnVubGVz|2^20|1:4", "FEC_ORDER=FEC_SRTP", f);
@@ -145,6 +180,7 @@ public class CryptoAttributeTest {
         assertEquals(2, ((SrtpKeyParam) a.getKeyParams()[1]).getMki());
         assertEquals(1, a.getSessionParams().length);
         assertEquals(FecOrderSessionParam.FEC_SRTP, ((FecOrderSessionParam) a.getSessionParams()[0]).getMode());
+        assertEquals("2 F8_128_HMAC_SHA1_80 inline:MTIzNDU2Nzg5QUJDREUwMTIzNDU2Nzg5QUJjZGVm|1048576|1:4;inline:QUJjZGVmMTIzNDU2Nzg5QUJDREUwMTIzNDU2Nzg5|1048576|2:4 FEC_ORDER=FEC_SRTP", a.encode());
     }
 
     @Test

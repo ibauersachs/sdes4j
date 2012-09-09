@@ -13,11 +13,6 @@
  */
 package ch.imvs.sdes4j.srtp;
 
-import java.util.LinkedList;
-import java.util.List;
-
-import ch.imvs.sdes4j.KeyParam;
-
 /**
  * FEC_KEY signals the use of separate master key(s) for a Forward Error
  * Correction (FEC) stream.
@@ -41,11 +36,10 @@ public class FecKeySessionParam extends SrtpSessionParam {
      */
     public FecKeySessionParam(String param) {
         String[] params = param.substring("FEC_KEY=".length()).split(";");
-        List<KeyParam> keyParams = new LinkedList<KeyParam>();
-        for (String p : params) {
-            keyParams.add(createSrtpKeyParam(p));
+        this.keyParams = new SrtpKeyParam[params.length];
+        for (int i = 0; i < this.keyParams.length; i++) {
+            this.keyParams[i] = createSrtpKeyParam(params[i]);
         }
-        this.keyParams = keyParams.toArray(new SrtpKeyParam[0]);
     }
 
     /**
