@@ -41,5 +41,8 @@ import test.ch.imvs.sdes4j.srtp.WshSessionParamTest;
 })
 public class AllTests {
     // the class remains completely empty, 
-    // being used only as a holder for the above annotations
+    // being used only as a holder for the above annotations 
+    public static void main(String args[]) {
+        org.junit.runner.JUnitCore.main("AllTests");
+    }
 }
