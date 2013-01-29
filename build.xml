@@ -1,42 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="jar" name="sdes4j" xmlns:ivy="antlib:org.apache.ivy.ant">
-	<!-- Ivy bootstrapping -->
-	<property name="ivy.install.version" value="2.3.0" />
-
-	<!-- Project properties -->
-	<property name="project.version" value="1.1.1" />
-	<property name="project.description" value="SDES (RFC4568) implementation for Java"/>
+<project default="javadoc" name="SDES4J" xmlns:ivy="antlib:org.apache.ivy.ant">
+	<property name="project.version" value="1.0.1" />
 	<property name="build.dir" value="build" />
-	<property name="build.dist.dir" value="${build.dir}/dist" />
-	<property name="build.dist.mavenlocal.dir" location="${build.dir}/ivyrepo"/>
 	<property name="build.classes.dir" value="${build.dir}/classes" />
 	<property name="build.doc.dir" value="${build.dir}/doc" />
-	<property name="build.jar" value="${build.dist.dir}/${ant.project.name}-${project.version}.jar" />
-	<property name="build.jar-src" value="${build.dist.dir}/${ant.project.name}-${project.version}-sources.jar" />
-	<property name="build.jar-doc" value="${build.dist.dir}/${ant.project.name}-${project.version}-javadoc.jar" />
+	<property name="build.jar" value="${build.dir}/${ant.project.name}-${project.version}.jar" />
+	<property name="build.jar-src" value="${build.dir}/${ant.project.name}-${project.version}-source.jar" />
+	<property name="build.jar-doc" value="${build.dir}/${ant.project.name}-${project.version}-javadoc.jar" />
 	<property name="src.dir" value="src" />
+	<property name="lib.dir" value="lib" />
 
-	<!-- Build targets -->
 	<target name="install-ivy" unless="ivy.bootstrapped">
-		<mkdir dir="${build.dir}/ivy"/>
+		<mkdir dir="${ivy.home}"/>
 		<get src="http://repo1.maven.org/maven2/org/apache/ivy/ivy/${ivy.install.version}/ivy-${ivy.install.version}.jar"
-			dest="${build.dir}/ivy/ivy.jar" usetimestamp="true"/>
+			dest="${ivy.jar.name}" usetimestamp="true"/>
 
-		<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpath="${build.dir}/ivy/ivy.jar"/>
+		<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpath="${ivy.jar.name}"/>
 		<property name="ivy.bootstrapped" value="true"/>
 	</target>
 
 	<target name="clean" description="--> clean the project">
 		<delete dir="${build.dir}"/>
-		<delete dir="bin"/>
 	</target>
 
-	<target name="prepare" depends="install-ivy">
-		<ivy:resolve/>
+	<target name="prepare">
 		<ivy:cachefileset setid="libs.ivy" conf="default" />
+
+		<fileset id="libs.local" dir="${lib.dir}">
+			<include name="*.jar" />
+		</fileset>
 
 		<path id="build.classpath">
 			<fileset refid="libs.ivy"/>
+			<!--<fileset refid="libs.local"/>-->
 		</path>
 	</target>
 
@@ -58,80 +54,32 @@
 		</javac>
 	</target>
 
-	<target name="javadoc" depends="prepare">
-		<javadoc
-			access="public"
-			author="true"
-			destdir="${build.doc.dir}"
-			nodeprecated="false"
-			nodeprecatedlist="false"
-			noindex="false"
-			nonavbar="false"
-			notree="false"
-			source="1.5"
-			sourcepath="src"
-			splitindex="true"
-			use="true"
-			version="true"
-			linksource="true">
-			<classpath refid="build.classpath"/>
-			<link href="http://docs.oracle.com/javase/1.5.0/docs/api/"/>  
-		</javadoc>
-	</target>
-
 	<target name="jar" depends="compile,javadoc">
-		<mkdir dir="${build.dist.dir}"/>
 		<jar
 			destfile="${build.jar}"
 			basedir="${build.classes.dir}"
-			manifest="${src.dir}/META-INF/MANIFEST.MF"
+			manifest="${src.dir}/META-INF/manifest.mf"
 		/>
 		<jar basedir="${src.dir}" destfile="${build.jar-src}"/>
 		<jar basedir="${build.doc.dir}" destfile="${build.jar-doc}"/>
 	</target>
-	
-	<target name="publish-internal" depends="install-ivy">
-		<loadproperties srcFile="publish.properties"/>
-		<input message="Please enter your PGP password: " addproperty="pgp.password"/>
-		<input message="Please enter your PGP keyId: " addproperty="pgp.keyId"/>
-		<input message="Please enter your sonatype username: " addproperty="upload.user"/>
-		<input message="Please enter your sonatype password: " addproperty="upload.password"/>
 
-		<ivy:settings file="ivysettings-publish.xml"/>
-		<ivy:resolve conf="default"/>
-		<ivy:makepom
-			ivyfile="ivy.xml"
-			pomfile="${build.dist.dir}/${ant.project.name}-${project.version}.pom"
-			conf="default"
-			description="${project.description}"
-			templateFile="pom-template.xml"
-		>
-			<mapping conf="default" scope="compile"/>
-			<mapping conf="test" scope="test"/>
-		</ivy:makepom>
-		<ivy:publish
-			resolver="${publish.resolver}"
-			revision="${project.version}"
-			overwrite="true" 
-			publishivy="false"
-			artifactspattern="${build.dist.dir}/[artifact]-[revision](-[classifier]).[ext]"
-		>
-		</ivy:publish>
-	</target>
-	
-	<target name="publish" depends="jar">
-		<ivy:cachepath organisation="org.bouncycastle" module="bcprov-jdk16" log="download-only" revision="1.46" inline="true" pathid="bouncycastle.bcprov.classpath"/>
-		<ivy:cachepath organisation="org.bouncycastle" module="bcpg-jdk16" log="download-only" revision="1.46" inline="true" pathid="bouncycastle.bcpg.classpath"/>
-		<property name="publish.resolver" value="local"/>
-
-		<java classname="org.apache.tools.ant.launch.Launcher" fork="true">
-			<classpath>
-				<fileset dir="${ant.home}" includes="**/*.jar"/>
-				<path refid="bouncycastle.bcprov.classpath"/>
-				<path refid="bouncycastle.bcpg.classpath"/>
-			</classpath>
-			<sysproperty key="javax.net.ssl.trustStoreType" value="Windows-ROOT"/>
-			<arg line="-autoproxy -d -Dpublish.resolver=${publish.resolver} publish-internal"/>
-		</java>
+	<target name="javadoc" depends="prepare">
+		<javadoc
+            access="public"
+            author="true"
+            destdir="${build.doc.dir}"
+            nodeprecated="false"
+            nodeprecatedlist="false"
+            noindex="false"
+            nonavbar="false"
+            notree="false"
+            source="1.6"
+            sourcepath="src"
+            splitindex="true"
+            use="true"
+            version="true">
+			<classpath refid="build.classpath"/>
+		</javadoc>
 	</target>
 </project>
