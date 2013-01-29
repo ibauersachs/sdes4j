@@ -1,0 +1,5 @@
+pgp.keyId=
+pgp.password=
+pgp.secring=${user.home}/AppData/Roaming/gnupg/secring.gpg
+upload.user=
+upload.password=
