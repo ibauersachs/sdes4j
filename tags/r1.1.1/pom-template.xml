@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+${ivy.pom.license}
+${ivy.pom.header}
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>${ivy.pom.groupId}</groupId>
+	<artifactId>${ivy.pom.artifactId}</artifactId>
+	<version>${ivy.pom.version}</version>
+	<packaging>${ivy.pom.packaging}</packaging>
+	<name>${ant.project.name}</name>
+	<description>${ivy.pom.description}</description>
+	<url>${ivy.pom.url}</url>
+	<licenses>
+		<license>
+			<name>GNU Lesser General Public License, Version 2.1</name>
+			<url>http://www.gnu.org/licenses/lgpl-2.1.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<scm>
+		<connection>scm:svn:http://sdes4j.googlecode.com/svn/trunk/</connection>
+		<url>https://code.google.com/p/sdes4j/source/browse/</url>
+	</scm>
+	<developers>
+		<developer>
+			<id>ibauersachs</id>
+			<name>Ingo Bauersachs</name>
+			<email>ibauersachs@gmail.com</email>
+		</developer>
+	</developers>
+</project>
