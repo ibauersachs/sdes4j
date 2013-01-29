@@ -13,9 +13,7 @@
  */
 package ch.imvs.sdes4j.srtp;
 
-import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.Random;
 
 import ch.imvs.sdes4j.*;
 
@@ -25,13 +23,8 @@ import ch.imvs.sdes4j.*;
  * @author Ingo Bauersachs
  */
 public class SrtpSDesFactory implements SDesFactory {
-    private Random r = null;
-
     /**
      * Creates an SRTP crypto attribute with the specified parameters, for use in an SDP.
-     * <p>
-     * If no random generator is set with {@link #setRandomGenerator(Random)} then the
-     * SHA1PRNG, or if not available, the system's default {@link SecureRandom} will be used.
      * 
      * @param tag decimal number used as an identifier for a particular crypto attribute
      * @param keyAlg identifier that describes the encryption and authentication algorithms
@@ -51,30 +44,13 @@ public class SrtpSDesFactory implements SDesFactory {
      */
     public SrtpCryptoAttribute createCryptoAttribute(int tag, String keyAlg, SrtpSessionParam[] params) {
         SrtpCryptoSuite suite = createCryptoSuite(keyAlg);
-        byte[] keyData = new byte[(suite.getEncKeyLength() + suite.getSaltKeyLength()) / 8];
-        getRandom().nextBytes(keyData);
+        SecureRandom r = new SecureRandom();
         SrtpKeyParam key = new SrtpKeyParam(
                 SrtpKeyParam.KEYMETHOD_INLINE,
-                keyData,
+                r.generateSeed((suite.getEncKeyLength() + suite.getSaltKeyLength()) / 8),
                 0, 0, 0
         );
         return new SrtpCryptoAttribute(tag, suite, new SrtpKeyParam[] { key }, params);
-    }
-    
-    private Random getRandom(){
-        if(r == null){
-            try {
-                r = SecureRandom.getInstance("SHA1PRNG");
-            }
-            catch (NoSuchAlgorithmException e) {
-                r = new SecureRandom();
-            }
-        }
-        return r;
-    }
-
-    public void setRandomGenerator(Random r) {
-        this.r = r;
     }
 
     public SrtpCryptoAttribute createCryptoAttribute() {

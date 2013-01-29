@@ -69,14 +69,4 @@ public class KdrSessionParamTest {
         assertEquals(0x1000000, kdr24.getKeyDerivationRateExpanded());
         assertEquals(input24, kdr24.encode());
     }
-
-    @Test(expected=IllegalArgumentException.class)
-    public void testKdrSessionParamStringInvalidLower() {
-        new KdrSessionParam("KDR=-1");
-    }
-
-    @Test(expected=IllegalArgumentException.class)
-    public void testKdrSessionParamStringInvalidUpper() {
-        new KdrSessionParam("KDR=25");
-    }
 }

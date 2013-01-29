@@ -1,32 +1,18 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<ivy-module version="2.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:e="http://ant.apache.org/ivy/extra"
-	xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd"
->
-	<info
-		organisation="ch.imvs"
-		module="sdes4j"
-		revision="${project.version}"
-		status="release"
-	>
-		<license name="GNU Lesser General Public License, Version 2.1" url="http://www.gnu.org/licenses/lgpl-2.1.txt"/>
-		<description homepage="http://sdes4j.imvs.ch">${project.description}</description>
-	</info>
-	<configurations defaultconf="default" defaultconfmapping="test->default">
-		<conf name="default"/>
-		<conf name="test" extends="default" visibility="private"/>
-	</configurations>
-	<publications>
-		<artifact name="sdes4j" type="pom" conf="default" ext="pom"/>
-		<artifact name="sdes4j" type="jar" conf="default" ext="jar"/>
-		<artifact name="sdes4j" type="sources" conf="default" ext="jar" e:classifier="sources"/>
-		<artifact name="sdes4j" type="javadoc" conf="default" ext="jar" e:classifier="javadoc"/>
-	</publications>
-	<dependencies>
-		<!-- limited to 1.6 as newer version require Java 6 -->
-		<dependency org="commons-codec" name="commons-codec" rev="[1.4,1.6]" transitive="false"/>
-		<dependency org="org.easymock" name="easymock" rev="2.5.+" conf="test"/>
-		<dependency org="org.easymock" name="easymockclassextension" rev="2.5+" conf="test"/>
-	</dependencies>
+<ivy-module version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
+    <info
+        organisation="FHNW, IMVS"
+        module="sdes4j"
+        status="integration">
+    </info>
+    <dependencies>
+        <!--
+        <dependency org="commons-logging" name="commons-logging" rev="1.1.1" transitive="false"/>
+        <dependency org="log4j" name="log4j" rev="1.2.16" transitive="false"/>
+        -->
+        <dependency org="commons-codec" name="commons-codec" rev="1.4" transitive="false"/>
+        <dependency org="org.easymock" name="easymock" rev="2.5.+"/>
+        <dependency org="org.easymock" name="easymockclassextension" rev="2.5+"/>
+    </dependencies>
 </ivy-module>

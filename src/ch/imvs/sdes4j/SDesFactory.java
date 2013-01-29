@@ -13,8 +13,6 @@
  */
 package ch.imvs.sdes4j;
 
-import java.util.Random;
-
 /**
  * Interface to create instances of specific grammar 
  * 
@@ -67,11 +65,4 @@ public interface SDesFactory {
      * @return Empty crypto attribute to be filled by a parser.
      */
     public CryptoAttribute createCryptoAttribute();
-
-    /**
-     * Sets the random number generator to be used for generating the SDES keys.
-     * 
-     * @param r The random number generator.
-     */
-    public void setRandomGenerator(Random r);
 }
