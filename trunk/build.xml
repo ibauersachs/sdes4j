@@ -130,8 +130,7 @@
 				<path refid="bouncycastle.bcprov.classpath"/>
 				<path refid="bouncycastle.bcpg.classpath"/>
 			</classpath>
-			<sysproperty key="javax.net.ssl.trustStoreType" value="Windows-ROOT"/>
-			<arg line="-autoproxy -d -Dpublish.resolver=${publish.resolver} publish-internal"/>
+			<arg line="-Dpublish.resolver=${publish.resolver} publish-internal"/>
 		</java>
 	</target>
 </project>
