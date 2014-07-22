@@ -48,7 +48,7 @@ public class SrtpCryptoAttribute extends CryptoAttribute {
      * @param sessionParams the additional key parameters
      */
     public SrtpCryptoAttribute(int tag, SrtpCryptoSuite cryptoSuite, SrtpKeyParam[] keyParams, SrtpSessionParam[] sessionParams) {
-        super(tag, cryptoSuite, keyParams, sessionParams);
+        super(tag, cryptoSuite, keyParams, sessionParams == null ? new SrtpSessionParam[0] : sessionParams);
     }
 
     @Override
