@@ -228,4 +228,54 @@ public class CryptoAttributeTest {
         assertEquals("1 AES_CM_128_HMAC_SHA1_80 inline:AA==", a.encode());
         assertEquals(0, a.getSessionParams().length);
     }
+
+    @Test
+    public void testEquals() {
+        CryptoAttribute a = CryptoAttribute.create("1", "AES_CM_128_HMAC_SHA1_80", "inline:PS1uQCVeeCFCanVmcjkpPywjNWhcYD0mXXtxaVBR|2^20|1:4", "", f);
+        CryptoAttribute b = CryptoAttribute.create("1", "AES_CM_128_HMAC_SHA1_80", "inline:PS1uQCVeeCFCanVmcjkpPywjNWhcYD0mXXtxaVBR|2^20|1:4", "", f);
+        CryptoAttribute c = CryptoAttribute.create("2", "AES_CM_128_HMAC_SHA1_80", "inline:PS1uQCVeeCFCanVmcjkpPywjNWhcYD0mXXtxaVBR|2^20|1:4", "", f);
+        CryptoAttribute d = CryptoAttribute.create("1", "AES_CM_128_HMAC_SHA1_32", "inline:PS1uQCVeeCFCanVmcjkpPywjNWhcYD0mXXtxaVBR|2^20|1:4", "", f);
+        CryptoAttribute e = CryptoAttribute.create("1", "AES_CM_128_HMAC_SHA1_80", "inline:PS1uQCVeeCFCanVmcjkpPywjNWhcYD0mXXtxaVBR|2^21|1:4", "", f);
+        CryptoAttribute g = CryptoAttribute.create("1", "AES_CM_128_HMAC_SHA1_80", "inline:PS1uQCVeeCFCanVmcjkpPywjNWhcYD0mXXtxaVBR|2^20|1:4", "FEC_ORDER=FEC_SRTP", f);
+        CryptoAttribute h = CryptoAttribute.create("1", "AES_CM_128_HMAC_SHA1_80", "inline:PS1uQCVeeCFCanVmcjkpPywjNWhcYD0mXXtxaVBR|2^20|1:4", "FEC_ORDER=FEC_SRTP", f);
+        CryptoAttribute i = CryptoAttribute.create("1", "AES_CM_128_HMAC_SHA1_80", "inline:PS1uQCVeeCFCanVmcjkpPywjNWhcYD0mXXtxaVBR", "FEC_ORDER=FEC_SRTP", f);
+
+        assertEquals(a, b);
+        assertEquals(g, h);
+
+        assertNotEquals(a, c);
+        assertNotEquals(a, d);
+        assertNotEquals(a, e);
+        assertNotEquals(a, g);
+        assertNotEquals(a, h);
+        assertNotEquals(a, i);
+
+        assertNotEquals(d, e);
+        assertNotEquals(h, i);
+    }
+
+    @Test
+    public void testHashcode() {
+        CryptoAttribute a = CryptoAttribute.create("1", "AES_CM_128_HMAC_SHA1_80", "inline:PS1uQCVeeCFCanVmcjkpPywjNWhcYD0mXXtxaVBR|2^20|1:4", "", f);
+        CryptoAttribute b = CryptoAttribute.create("1", "AES_CM_128_HMAC_SHA1_80", "inline:PS1uQCVeeCFCanVmcjkpPywjNWhcYD0mXXtxaVBR|2^20|1:4", "", f);
+        CryptoAttribute c = CryptoAttribute.create("2", "AES_CM_128_HMAC_SHA1_80", "inline:PS1uQCVeeCFCanVmcjkpPywjNWhcYD0mXXtxaVBR|2^20|1:4", "", f);
+        CryptoAttribute d = CryptoAttribute.create("1", "AES_CM_128_HMAC_SHA1_32", "inline:PS1uQCVeeCFCanVmcjkpPywjNWhcYD0mXXtxaVBR|2^20|1:4", "", f);
+        CryptoAttribute e = CryptoAttribute.create("1", "AES_CM_128_HMAC_SHA1_80", "inline:PS1uQCVeeCFCanVmcjkpPywjNWhcYD0mXXtxaVBR|2^21|1:4", "", f);
+        CryptoAttribute g = CryptoAttribute.create("1", "AES_CM_128_HMAC_SHA1_80", "inline:PS1uQCVeeCFCanVmcjkpPywjNWhcYD0mXXtxaVBR|2^20|1:4", "FEC_ORDER=FEC_SRTP", f);
+        CryptoAttribute h = CryptoAttribute.create("1", "AES_CM_128_HMAC_SHA1_80", "inline:PS1uQCVeeCFCanVmcjkpPywjNWhcYD0mXXtxaVBR|2^20|1:4", "FEC_ORDER=FEC_SRTP", f);
+        CryptoAttribute i = CryptoAttribute.create("1", "AES_CM_128_HMAC_SHA1_80", "inline:PS1uQCVeeCFCanVmcjkpPywjNWhcYD0mXXtxaVBR", "FEC_ORDER=FEC_SRTP", f);
+
+        assertEquals(a.hashCode(), b.hashCode());
+        assertEquals(g.hashCode(), h.hashCode());
+
+        assertNotEquals(a.hashCode(), c.hashCode());
+        assertNotEquals(a.hashCode(), d.hashCode());
+        assertNotEquals(a.hashCode(), e.hashCode());
+        assertNotEquals(a.hashCode(), g.hashCode());
+        assertNotEquals(a.hashCode(), h.hashCode());
+        assertNotEquals(a.hashCode(), i.hashCode());
+
+        assertNotEquals(d.hashCode(), e.hashCode());
+        assertNotEquals(h.hashCode(), i.hashCode());
+    }
 }

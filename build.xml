@@ -4,7 +4,7 @@
 	<property name="ivy.install.version" value="2.3.0" />
 
 	<!-- Project properties -->
-	<property name="project.version" value="1.1.2" />
+	<property name="project.version" value="1.1.3" />
 	<property name="project.description" value="SDES (RFC4568) implementation for Java"/>
 	<property name="build.dir" value="build" />
 	<property name="build.dist.dir" value="${build.dir}/dist" />
