@@ -277,4 +277,20 @@ public class CryptoAttribute {
             return null;
         }
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj instanceof CryptoAttribute)
+        {
+            CryptoAttribute other = (CryptoAttribute)obj;
+            return encode().equals(other.encode());
+        }
+
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return encode().hashCode();
+    }
 }
