@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Bundle-Name: SDES4J
-Bundle-Description: Java implementation of SDES (Security Descriptions for Media Streams, RFC 4568)
-Bundle-Vendor: FHNW
-Bundle-Version: 1.1.3
-Bundle-SymbolicName: ch.imvs.sdes4j
-Import-Package: org.apache.commons.codec.binary
-Export-Package: ch.imvs.sdes4j,
- ch.imvs.sdes4j.srtp
