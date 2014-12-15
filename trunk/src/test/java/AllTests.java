@@ -14,16 +14,16 @@
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-import test.ch.imvs.sdes4j.CryptoAttributeTest;
-import test.ch.imvs.sdes4j.srtp.FecKeySessionParamTest;
-import test.ch.imvs.sdes4j.srtp.FecOrderSessionParamTest;
-import test.ch.imvs.sdes4j.srtp.KdrSessionParamTest;
-import test.ch.imvs.sdes4j.srtp.NoAuthSessionParamTest;
-import test.ch.imvs.sdes4j.srtp.PlainSrtcpSessionParamTest;
-import test.ch.imvs.sdes4j.srtp.PlainSrtpSessionParamTest;
-import test.ch.imvs.sdes4j.srtp.SrtpCryptoSuiteTest;
-import test.ch.imvs.sdes4j.srtp.SrtpKeyParamTest;
-import test.ch.imvs.sdes4j.srtp.WshSessionParamTest;
+import ch.imvs.sdes4j.CryptoAttributeTest;
+import ch.imvs.sdes4j.srtp.FecKeySessionParamTest;
+import ch.imvs.sdes4j.srtp.FecOrderSessionParamTest;
+import ch.imvs.sdes4j.srtp.KdrSessionParamTest;
+import ch.imvs.sdes4j.srtp.NoAuthSessionParamTest;
+import ch.imvs.sdes4j.srtp.PlainSrtcpSessionParamTest;
+import ch.imvs.sdes4j.srtp.PlainSrtpSessionParamTest;
+import ch.imvs.sdes4j.srtp.SrtpCryptoSuiteTest;
+import ch.imvs.sdes4j.srtp.SrtpKeyParamTest;
+import ch.imvs.sdes4j.srtp.WshSessionParamTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({

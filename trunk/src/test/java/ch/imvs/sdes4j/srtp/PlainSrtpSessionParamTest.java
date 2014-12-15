@@ -11,19 +11,19 @@
  * 
  * Distributable under LGPL license, see terms of license at gnu.org.
  */
-package test.ch.imvs.sdes4j.srtp;
+package ch.imvs.sdes4j.srtp;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import ch.imvs.sdes4j.srtp.PlainSrtcpSessionParam;
+import ch.imvs.sdes4j.srtp.PlainSrtpSessionParam;
 
-public class PlainSrtcpSessionParamTest {
+public class PlainSrtpSessionParamTest {
 
     @Test
     public void testToString() {
-        assertEquals("UNENCRYPTED_SRTCP", new PlainSrtcpSessionParam().encode());
+        assertEquals("UNENCRYPTED_SRTP", new PlainSrtpSessionParam().encode());
     }
 
 }

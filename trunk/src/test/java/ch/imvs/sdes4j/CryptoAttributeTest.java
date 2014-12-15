@@ -11,7 +11,7 @@
  * 
  * Distributable under LGPL license, see terms of license at gnu.org.
  */
-package test.ch.imvs.sdes4j;
+package ch.imvs.sdes4j;
 
 import static org.junit.Assert.*;
 

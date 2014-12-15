@@ -11,25 +11,19 @@
  * 
  * Distributable under LGPL license, see terms of license at gnu.org.
  */
-package test.ch.imvs.sdes4j.srtp;
+package ch.imvs.sdes4j.srtp;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import ch.imvs.sdes4j.srtp.SrtpCryptoSuite;
+import ch.imvs.sdes4j.srtp.NoAuthSessionParam;
 
-public class SrtpCryptoSuiteTest {
+public class NoAuthSessionParamTest {
+
     @Test
     public void testToString() {
-        assertEquals("AES_CM_128_HMAC_SHA1_80",
-                new SrtpCryptoSuite(SrtpCryptoSuite.AES_CM_128_HMAC_SHA1_80).encode());
+        assertEquals("UNAUTHENTICATED_SRTP", new NoAuthSessionParam().encode());
     }
 
-    @Test(expected=IllegalArgumentException.class)
-    public void testSrtpCryptoSuiteInvalid() {
-        new SrtpCryptoSuite("invalid suite");
-    }
-
-    // more tests would only duplicate the dumb behavior of the constructor...
 }
