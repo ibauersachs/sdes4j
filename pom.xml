@@ -8,7 +8,7 @@
 	<packaging>bundle</packaging>
 	<name>sdes4j</name>
 	<description>SDES (RFC4568) implementation for Java</description>
-	<url>http://sdes4j.imvs.ch</url>
+	<url>http://github.com/ibauersachs/sdes4j</url>
 	<organization>
 		<name>University of Applied Sciences Northwestern Switzerland</name>
 	</organization>
@@ -20,8 +20,8 @@
 		</license>
 	</licenses>
 	<scm>
-		<connection>scm:svn:http://sdes4j.googlecode.com/svn/trunk/</connection>
-		<url>https://code.google.com/p/sdes4j/source/browse/</url>
+		<connection>scm:git:https://github.com/ibauersachs/sdes4j.git</connection>
+		<url>https://github.com/ibauersachs/sdes4j</url>
 	</scm>
 	<developers>
 		<developer>
