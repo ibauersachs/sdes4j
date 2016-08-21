@@ -1,0 +1,17 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: sdes4j
+Source: http://github.com/ibauersachs/sdes4j
+
+Files: *
+Copyright: 2016, University of Applied Sciences Northwestern Switzerland
+License: LGPL-2.1
+
+Files: debian/*
+Copyright: 2016, Ingo Bauersachs <ingo@jitsi.org>
+License: LGPL-2.1
+
+License: LGPL-2.1
+ On Debian systems, the full text of the LGPL-2.1 license
+ can be found in the file '/usr/share/common-licenses/LGPL-2.1'
+
+

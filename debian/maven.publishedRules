@@ -1,0 +1,5 @@
+
+ch.imvs sdes4j bundle * * *
+ch.imvs sdes4j bundle s/.*/debian/ * *
+ch.imvs sdes4j s/jar/bundle/ * * *
+ch.imvs sdes4j s/jar/bundle/ s/.*/debian/ * *

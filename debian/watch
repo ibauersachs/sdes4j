@@ -1,0 +1,3 @@
+version=3
+https://github.com/ibauersachs/sdes4j/tags .*/(?:.*?)([\d\.]+)\.tar\.gz
+

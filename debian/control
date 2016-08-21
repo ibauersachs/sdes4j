@@ -1,0 +1,35 @@
+Source: sdes4j
+Section: java
+Priority: optional
+Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
+Uploaders: Ingo Bauersachs <ingo@jitsi.org>
+Build-Depends: debhelper (>= 9), cdbs, default-jdk, maven-debian-helper (>= 1.5)
+Build-Depends-Indep: libmaven-bundle-plugin-java, libcommons-codec-java, junit4, default-jdk-doc,  
+ libcommons-codec-java-doc, libmaven-javadoc-plugin-java 
+Standards-Version: 3.9.8
+Vcs-Git: https://github.com/ibauersachs/sdes4j.git
+Vcs-Browser: https://github.com/ibauersachs/sdes4j
+Homepage: https://github.com/ibauersachs/sdes4j
+
+Package: libsdes4j-java
+Architecture: all
+Depends: ${misc:Depends}, ${maven:Depends}
+Suggests: ${maven:OptionalDepends}, libsdes4j-java-doc
+Description: SDES (RFC4568) implementation for Java
+ sdes4j is a small Java library to parse and generate
+ Session Description Protocol (SDP) Security Descriptions
+ for Media Streams according to RFC4568.
+
+Package: libsdes4j-java-doc
+Architecture: all
+Section: doc
+Depends: ${misc:Depends}
+Recommends: ${maven:DocDepends}, ${maven:DocOptionalDepends}
+Suggests: libsdes4j-java
+Description: Documentation for sdes4j
+ SDES (RFC4568) implementation for Java
+ sdes4j is a small Java library to parse and generate
+ Session Description Protocol (SDP) Security Descriptions
+ for Media Streams according to RFC4568.
+ .
+ This package contains the API documentation of libsdes4j-java.

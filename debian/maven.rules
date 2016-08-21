@@ -1,0 +1,5 @@
+
+ch.imvs sdes4j bundle * * *
+ch.imvs sdes4j bundle s/.*/debian/ * *
+junit junit jar s/4\..*/4.x/ * *
+org.apache.felix maven-bundle-plugin * s/.*/2.3.7/ * *
