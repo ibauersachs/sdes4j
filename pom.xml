@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ch.imvs</groupId>
 	<artifactId>sdes4j</artifactId>
-	<version>1.1.4-SNAPSHOT</version>
+	<version>1.1.4</version>
 	<packaging>bundle</packaging>
 	<name>sdes4j</name>
 	<description>SDES (RFC4568) implementation for Java</description>
@@ -22,7 +21,8 @@
 	<scm>
 		<connection>scm:git:https://github.com/ibauersachs/sdes4j.git</connection>
 		<url>https://github.com/ibauersachs/sdes4j</url>
-	</scm>
+	  <tag>r1.1.4</tag>
+  </scm>
 	<developers>
 		<developer>
 			<id>ibauersachs</id>
