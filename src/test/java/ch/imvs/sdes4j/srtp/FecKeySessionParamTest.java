@@ -19,9 +19,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import ch.imvs.sdes4j.srtp.FecKeySessionParam;
-import ch.imvs.sdes4j.srtp.SrtpKeyParam;
-
 public class FecKeySessionParamTest {
 
     private SrtpKeyParam kp1;

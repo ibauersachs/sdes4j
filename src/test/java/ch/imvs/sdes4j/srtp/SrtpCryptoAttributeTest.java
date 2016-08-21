@@ -18,11 +18,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import ch.imvs.sdes4j.srtp.SrtpCryptoAttribute;
-import ch.imvs.sdes4j.srtp.SrtpCryptoSuite;
-import ch.imvs.sdes4j.srtp.SrtpKeyParam;
-import ch.imvs.sdes4j.srtp.SrtpSDesFactory;
-
 public class SrtpCryptoAttributeTest {
     private SrtpSDesFactory f;
 

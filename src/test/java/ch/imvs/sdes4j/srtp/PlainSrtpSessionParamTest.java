@@ -17,8 +17,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import ch.imvs.sdes4j.srtp.PlainSrtpSessionParam;
-
 public class PlainSrtpSessionParamTest {
 
     @Test
