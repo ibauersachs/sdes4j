@@ -105,6 +105,7 @@ public class SrtpKeyParam implements KeyParam {
      * The key method for this key parameter.
      * @return {@value #KEYMETHOD_INLINE}
      */
+    @Override
     public String getKeyMethod() {
         return keyMethod;
     }
@@ -143,6 +144,7 @@ public class SrtpKeyParam implements KeyParam {
         return mkiLength;
     }
 
+    @Override
     public String encode() {
         StringBuilder sb = new StringBuilder();
         sb.append(keyMethod);

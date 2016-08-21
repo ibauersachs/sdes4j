@@ -25,6 +25,7 @@ package ch.imvs.sdes4j.srtp;
 public class PlainSrtcpSessionParam extends SrtpSessionParam {
     private static final String UNENCRYPTED_SRTCP = "UNENCRYPTED_SRTCP";
 
+    @Override
     public String encode() {
         return UNENCRYPTED_SRTCP;
     }

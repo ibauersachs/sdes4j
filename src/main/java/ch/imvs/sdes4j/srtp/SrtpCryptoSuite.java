@@ -228,6 +228,7 @@ public class SrtpCryptoSuite implements CryptoSuite {
         return srtcpLifetime;
     }
 
+    @Override
     public String encode() {
         return suite;
     }
