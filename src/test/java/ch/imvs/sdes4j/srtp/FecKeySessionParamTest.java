@@ -13,7 +13,6 @@
  */
 package ch.imvs.sdes4j.srtp;
 
-import static org.easymock.EasyMock.*;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -26,23 +25,27 @@ public class FecKeySessionParamTest {
 
     @Before
     public void setUp() {
-        kp1 = createMock(SrtpKeyParam.class);
-        kp2 = createMock(SrtpKeyParam.class);
+        kp1 = new SrtpKeyParam(SrtpKeyParam.KEYMETHOD_INLINE, new byte[0], 0, 0, 0){
+            @Override
+            public String encode() {
+                return "KP1";
+            }
+        };
+        kp2 = new SrtpKeyParam(SrtpKeyParam.KEYMETHOD_INLINE, new byte[0], 0, 0, 0){
+            @Override
+            public String encode() {
+                return "KP2";
+            }
+        };
     }
 
     @Test
     public void testFecKeySessionParamSrtpKeyParamArray() {
-        expect(kp1.encode()).andReturn("KP1").anyTimes();
-        expect(kp2.encode()).andReturn("KP2").anyTimes();
-        replay(kp1, kp2);
-
         FecKeySessionParam fecOne = new FecKeySessionParam(new SrtpKeyParam[] { kp1 });
         assertEquals("FEC_KEY=KP1", fecOne.encode());
 
         FecKeySessionParam fecTwo = new FecKeySessionParam(new SrtpKeyParam[] { kp1, kp2 });
         assertEquals("FEC_KEY=KP1;KP2", fecTwo.encode());
-
-        verify(kp1, kp2);
     }
 
     @Test
@@ -50,10 +53,14 @@ public class FecKeySessionParamTest {
         String oneKeyParam = "FEC_KEY=KP1";
         FecKeySessionParam fecKeyOne = new FecKeySessionParam(oneKeyParam){
             @Override
-            protected SrtpKeyParam createSrtpKeyParam(String p) {
-                SrtpKeyParam kp = createMock(SrtpKeyParam.class);
-                expect(kp.encode()).andReturn(p).anyTimes();
-                replay(kp);
+            protected SrtpKeyParam createSrtpKeyParam(final String p) {
+                SrtpKeyParam kp = new SrtpKeyParam(SrtpKeyParam.KEYMETHOD_INLINE, new byte[0], 0, 0, 0){
+                    @Override
+                    public String encode() {
+                        return p;
+                    }
+                };
+
                 return kp;
             }
         };
@@ -63,10 +70,14 @@ public class FecKeySessionParamTest {
         String twoKeyParam = "FEC_KEY=KP1;KP2";
         FecKeySessionParam fecKeyTwo = new FecKeySessionParam(twoKeyParam){
             @Override
-            protected SrtpKeyParam createSrtpKeyParam(String p) {
-                SrtpKeyParam kp = createMock(SrtpKeyParam.class);
-                expect(kp.encode()).andReturn(p).anyTimes();
-                replay(kp);
+            protected SrtpKeyParam createSrtpKeyParam(final String p) {
+                SrtpKeyParam kp = new SrtpKeyParam(SrtpKeyParam.KEYMETHOD_INLINE, new byte[0], 0, 0, 0){
+                    @Override
+                    public String encode() {
+                        return p;
+                    }
+                };
+
                 return kp;
             }
         };
