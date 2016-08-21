@@ -27,5 +27,5 @@ public interface CryptoSuite {
      * 
      * @return The name of the crypto suite.
      */
-    public String encode();
+    String encode();
 }

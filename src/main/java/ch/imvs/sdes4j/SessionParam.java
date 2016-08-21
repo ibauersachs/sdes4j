@@ -25,5 +25,5 @@ public interface SessionParam {
      * 
      * @return Textual representation of the session parameter.
      */
-    public String encode();
+    String encode();
 }

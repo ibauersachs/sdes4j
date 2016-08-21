@@ -27,7 +27,7 @@ public interface KeyParam {
      * 
      * @return <code>inline</code>
      */
-    public String getKeyMethod();
+    String getKeyMethod();
 
     /**
      * Encodes the information contained in this object for use in the complete
@@ -35,5 +35,5 @@ public interface KeyParam {
      * 
      * @return Textual representation of the key parameter.
      */
-    public String encode();
+    String encode();
 }

@@ -27,7 +27,7 @@ public interface SDesFactory {
      * @param suite The suite name that defines the cryptographic parameters.
      * @return A crypto suite instance based on the supplied suite name.
      */
-    public CryptoSuite createCryptoSuite(String suite);
+    CryptoSuite createCryptoSuite(String suite);
 
     /**
      * Creates a key parameter instance for the grammar implementing this interface.
@@ -35,7 +35,7 @@ public interface SDesFactory {
      * @param keyParam The textual representation of the key parameter field.
      * @return The parsed key parameter.
      */
-    public KeyParam createKeyParam(String keyParam);
+    KeyParam createKeyParam(String keyParam);
 
     /**
      * Utility method to create a typed array of <code>KeyParameter</code>s.
@@ -43,7 +43,7 @@ public interface SDesFactory {
      * @param size The size of the array to create.
      * @return KeyParam array of the specified size.
      */
-    public KeyParam[] createKeyParamArray(int size);
+    KeyParam[] createKeyParamArray(int size);
 
     /**
      * Creates a session parameter instance for the grammar implementing this interface.
@@ -51,7 +51,7 @@ public interface SDesFactory {
      * @param sessionParam The textual representation of the session parameter.
      * @return The parsed session parameter.
      */
-    public SessionParam createSessionParam(String sessionParam);
+    SessionParam createSessionParam(String sessionParam);
 
     /**
      * Utility method to create a typed array of <code>SessionParam</code>s.
@@ -59,19 +59,19 @@ public interface SDesFactory {
      * @param size The size of the array to create.
      * @return SessionParam array of the specified size.
      */
-    public SessionParam[] createSessionParamArray(int size);
+    SessionParam[] createSessionParamArray(int size);
 
     /**
      * Creates an empty crypto attribute for the grammar implementing this interface.
      * 
      * @return Empty crypto attribute to be filled by a parser.
      */
-    public CryptoAttribute createCryptoAttribute();
+    CryptoAttribute createCryptoAttribute();
 
     /**
      * Sets the random number generator to be used for generating the SDES keys.
      * 
      * @param r The random number generator.
      */
-    public void setRandomGenerator(Random r);
+    void setRandomGenerator(Random r);
 }
