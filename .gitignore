@@ -6,3 +6,5 @@ build
 coverage
 publish.properties
 target
+*.iml
+.idea
