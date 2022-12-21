@@ -26,6 +26,7 @@ Section: doc
 Depends: ${misc:Depends}
 Recommends: ${maven:DocDepends}, ${maven:DocOptionalDepends}
 Suggests: libsdes4j-java
+Multi-Arch: foreign
 Description: Documentation for sdes4j
  SDES (RFC4568) implementation for Java
  sdes4j is a small Java library to parse and generate
